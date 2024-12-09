@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Kanban task board</title>
+    </head>
+
+    <body>
+        <h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+
+        <h1>Task board</h1>
+        <a href="/new">New Task</a>
+
+        <table>
+            <tr>
+                <th>Uncompleted</th>
+                    <tr th:each="note : ${todoList}">
+                        <td th:text="${note.name}">TODO name</td>
+                        <td th:text="${note.duration}">TODO duration</td>
+                        <td th:text="${note.description}">TODO description</td>
+                        <td th:text="${note.completed}">todo ready</td>
+                    </tr>
+                <th>Completed</th>
+                    <tr th:each="note : ${todoList}">
+                        <td th:text="${note.name}">TODO name</td>
+                        <td th:text="${note.duration}">TODO duration</td>
+                        <td th:text="${note.description}">TODO description</td>
+                        <td th:text="${note.completed}">todo ready</td>
+                    </tr>
+            </tr>
+            <tr th:each="note : ${todoList}">
+                <td th:text="${note.name}">TODO name</td>
+                <td th:text="${note.duration}">TODO duration</td>
+                <td th:text="${note.description}">TODO description</td>
+                <td th:text="${note.completed}">todo ready</td>
+            </tr>
+        </table>
+
+        <h2>Complete a task</h2>
+
+        <form th:action="@{/}" method="POST">
+            <span>From:</span><br/>
+            <select name="from">
+                <option th:each="note: ${todoList}" th:value="${note.completed}" 
+                        th:text="${note.name}" >Options</option>
+            </select><br/>
+
+            <span>Do the task:</span><br/>
+            <input type="boolean" name="completed"/><br/>
+
+            <input type="submit" value="complete"/>
+        </form>
+    </body>
+</html>

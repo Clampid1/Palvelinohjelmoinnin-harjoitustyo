@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Add a Task</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1>Add a Task</h1>
+    <input type="text" placeholder="Enter new task">
+    <form th:action="@{/new}" method="POST">
+        <p>Name: <input type="String" name="name"></input></p>
+        <p>duration: <input type="int" name="duration"></input></p>
+        <p>Description: <input type="String" name="description"></input></p>
+        <p>Completed: <input type="boolean" name="completed"></input></p>
+        <p>User: <input type="User" name="user"></input></p>
+    </form>
+</body>
+
+</html>
