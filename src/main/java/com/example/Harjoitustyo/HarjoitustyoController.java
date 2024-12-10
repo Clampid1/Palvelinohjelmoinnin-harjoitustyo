@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class HarjoitustyoController {
@@ -16,7 +18,16 @@ public class HarjoitustyoController {
 
     @GetMapping("/data")
     public String showAll(Model model) {
-        model.addAttribute("notes", this.todoRepository.findAll());
+        List<Todo> todoList = this.todoRepository.findAll();
+        List<Todo> incompleteList = todoList.stream()
+                .filter(todo -> !todo.isCompleted())
+                .toList();
+
+        List<Todo> completedList = todoList.stream()
+                .filter(Todo::isCompleted)
+                .toList();
+        model.addAttribute("todoList", incompleteList);
+        model.addAttribute("completedList", completedList);
         return "data";
     }
     @GetMapping("/new")
@@ -25,8 +36,23 @@ public class HarjoitustyoController {
     }
     @PostMapping("/new")
     public String save(@RequestParam String name, @RequestParam int duration, @RequestParam String description) {
-        Todo note = new Todo(name, duration, description);
-        todoRepository.save(note);
-        return "/data";
+        Todo note = new Todo();
+        note.setName(name);
+        note.setDuration(duration);
+        note.setDescription(description);
+        note.setCompleted(false);
+        this.todoRepository.save(note);
+        return "redirect:/data";
+    }
+
+    @PostMapping("/data")
+    public String update(@RequestParam Long value) {
+        Optional<Todo> task = this.todoRepository.findById(value);
+        if (task.isPresent()) {
+            Todo todo = task.get();
+            todo.setCompleted(true);
+            this.todoRepository.save(todo);
+        }
+        return "redirect:/data";
     }
 }

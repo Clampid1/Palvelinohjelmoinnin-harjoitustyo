@@ -881,3 +881,6 @@ INSERT INTO TODO (id, name, duration, description, completed) VALUES (1, 'Juoksu
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:840)
+2024-12-10 11:46:23.198265+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from [*]*"; expected "identifier"; SQL statement:
+select * from * [42001-232]

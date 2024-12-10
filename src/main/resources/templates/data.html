@@ -45,13 +45,13 @@
 <h2>Complete a task</h2>
 
 <form th:action="@{/data}" method="POST">
-    <span>From:</span><br/>
-    <select name="from">
+    <span>Do the task:</span><br/>
+    <select name="value">
         <option th:each="note: ${todoList}" th:value="${note.id}" th:text="${note.name}">Options</option>
+        <input type="submit" value="Complete"/>
     </select><br/>
 
-    <span>Do the task:</span><br/>
-    <input type="submit" value="Complete"/>
+
 </form>
 </body>
 </html>
