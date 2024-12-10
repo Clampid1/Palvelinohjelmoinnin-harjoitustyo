@@ -4,18 +4,28 @@
 <head>
     <title>Add a Task</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <h1>Add a Task</h1>
-    <input type="text" placeholder="Enter new task">
+    <p>Enter new task<p>
     <form th:action="@{/new}" method="POST">
-        <p>Name: <input type="String" name="name"></input></p>
-        <p>duration: <input type="int" name="duration"></input></p>
-        <p>Description: <input type="String" name="description"></input></p>
-        <p>Completed: <input type="boolean" name="completed"></input></p>
-        <p>User: <input type="User" name="user"></input></p>
+        <p>Name: <label>
+            <input type="text" name="name">
+        </label></p>
+        <p>duration: <label>
+            <input type="number" name="duration">
+        </label></p>
+        <p>Description: <label>
+            <input type="text" name="description">
+        </label></p>
+        <p>Completed: <label>
+            <input type="text" name="completed">
+        </label></p>
+        <p>User: <label>
+            <input type="text" name="user">
+        </label></p>
+        <div><input type="submit" value="Add Task"/></div>
     </form>
 </body>
 

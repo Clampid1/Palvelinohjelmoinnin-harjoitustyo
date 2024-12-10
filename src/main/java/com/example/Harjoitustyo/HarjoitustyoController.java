@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HarjoitustyoController {
@@ -17,11 +19,14 @@ public class HarjoitustyoController {
         model.addAttribute("notes", this.todoRepository.findAll());
         return "data";
     }
+    @GetMapping("/new")
+    public String showNewPage() {
+        return "/new";
+    }
     @PostMapping("/new")
-    public String save(String name, int duration, String description, User _user) {
-        Todo note = new Todo(name, duration, description, _user);
+    public String save(@RequestParam String name, @RequestParam int duration, @RequestParam String description) {
+        Todo note = new Todo(name, duration, description);
         todoRepository.save(note);
-
-        return "redirect:/data";
+        return "/data";
     }
 }

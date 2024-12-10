@@ -20,18 +20,15 @@ public class Todo extends AbstractPersistable<Long> {
     private int duration;
     private String description;
     private boolean completed;
-    @ManyToOne
-    private User _user;
 
     public Todo() {
 
     }
 
-    public Todo(String name, int duration, String description, User user) {
+    public Todo(String name, int duration, String description) {
         this.name = name;
         this.duration = duration;
         this.description = description;
         this.completed = false;
-        this._user = user;
     }
 }
