@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,5 +56,19 @@ public class HarjoitustyoController {
             this.todoRepository.save(todo);
         }
         return "redirect:/data";
+    }
+    @GetMapping("/data/{id}")
+    public String show(@PathVariable Long id, Model model) {
+        Todo task = this.todoRepository.getReferenceById(id);
+        if (task.isCompleted()) {
+            List<Todo> list1 = new ArrayList<>();
+            list1.add(task);
+            model.addAttribute("completedList", list1);
+        } else {
+            List<Todo> list2 = new ArrayList<>();
+            list2.add(task);
+            model.addAttribute("incompleted", list2);
+        }
+        return "data";
     }
 }
