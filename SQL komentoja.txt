@@ -1,0 +1,2 @@
+insert into todo (id, name, duration, description, completed) values (1, 'Juoksu', 30, 'Juoksu', 'false')
+insert into tasker (id, username, password, role) values (1, 'ville', 'passu', 'USER')

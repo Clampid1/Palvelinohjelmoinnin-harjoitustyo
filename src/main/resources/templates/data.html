@@ -46,10 +46,12 @@
 
 <form th:action="@{/data}" method="POST">
     <span>Do the task:</span><br/>
-    <select name="value">
-        <option th:each="note: ${todoList}" th:value="${note.id}" th:text="${note.name}">Options</option>
-        <input type="submit" value="Complete"/>
-    </select><br/>
+    <label>
+        <select name="value">
+            <option th:each="note: ${todoList}" th:value="${note.id}" th:text="${note.name}">Options</option>
+            <input type="submit" value="Complete"/>
+        </select>
+    </label><br/>
 
 
 </form>
