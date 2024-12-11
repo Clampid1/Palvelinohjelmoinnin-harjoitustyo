@@ -43,7 +43,7 @@ public class HarjoitustyoController {
         return "data";
     }
     @GetMapping("/new")
-    public String showNewPage(Model model) {
+    public String showAddPage(Model model) {
         List<Status> statusList = this.statusRepository.findAll();
         model.addAttribute("statusList", statusList);
         return "/new";
