@@ -1,25 +1,35 @@
 package com.example.Harjoitustyo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 import org.springframework.stereotype.Component;
+
+import java.util.Objects;
 
 
 @Entity
 @Component
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class Todo extends AbstractPersistable<Long> {
+public class Todo {
 
+    @Id
+    @GeneratedValue
+    private Long id;
     private String name;
     private int duration;
     private String description;
-    private boolean completed;
+    @ManyToOne
+    private Status status;
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -29,9 +39,6 @@ public class Todo extends AbstractPersistable<Long> {
     }
     public void setDescription(String description) {
         this.description = description;
-    }
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
     }
     public String getName() {
         return name;
@@ -44,17 +51,12 @@ public class Todo extends AbstractPersistable<Long> {
     public String getDescription() {
         return description;
     }
-    public boolean isCompleted() {
-        return completed;
-    }
 
-    @Override
     public Long getId() {
-        return super.getId();
+        return id;
     }
 
-    @Override
-    protected void setId(Long id) {
-        super.setId(id);
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      lang="">
 <head>
     <title>Kanban task board</title>
 </head>
@@ -10,20 +11,22 @@
     <input type="submit" value="Sign Out"/>
 </form>
 
-<h1>Task board</h1>
+<h1>Sprint board</h1>
 <a href="/new">New Task</a>
 
 <table>
     <thead>
     <tr>
-        <th>Uncompleted</th>
-        <th>Completed</th>
+        <th>Waiting</th>
+        <th>Doing</th>
+        <th>Reviewing</th>
+        <th>Complete</th>
     </tr>
     </thead>
     <tbody>
     <tr>
         <td>
-            <div th:each="note : ${todoList}">
+            <div th:each="note : ${waitingList}">
                 <span th:text="${note.name}">TODO name</span><br/>
                 <span th:text="${note.duration}">TODO duration</span><br/>
                 <span th:text="${note.description}">TODO description</span>
@@ -31,7 +34,23 @@
             </div>
         </td>
         <td>
-            <div th:each="note : ${completedList}">
+            <div th:each="note : ${doingList}">
+                <span th:text="${note.name}">TODO name</span><br/>
+                <span th:text="${note.duration}">TODO duration</span><br/>
+                <span th:text="${note.description}">TODO description</span>
+                <p></p>
+            </div>
+        </td>
+        <td>
+            <div th:each="note : ${reviewList}">
+                <span th:text="${note.name}">TODO name</span><br/>
+                <span th:text="${note.duration}">TODO duration</span><br/>
+                <span th:text="${note.description}">TODO description</span>
+                <p></p>
+            </div>
+        </td>
+        <td>
+            <div th:each="note : ${completeList}">
                 <span th:text="${note.name}">TODO name</span><br/>
                 <span th:text="${note.duration}">TODO duration</span><br/>
                 <span th:text="${note.description}">TODO description</span>
@@ -42,18 +61,24 @@
     </tbody>
 </table>
 
-<h2>Complete a task</h2>
+<h2>Move task</h2>
 
-<form th:action="@{/data}" method="POST">
-    <span>Do the task:</span><br/>
+<form th:action="@{/move_right}" method="POST">
     <label>
-        <select name="value">
+        <select name="right">
             <option th:each="note: ${todoList}" th:value="${note.id}" th:text="${note.name}">Options</option>
-            <input type="submit" value="Complete"/>
+            <input type="submit" value="Move Right"/>
         </select>
     </label><br/>
 
-
+</form>
+<form th:action="@{/move_left}" method="POST">
+<label>
+    <select name="left">
+        <option th:each="note: ${todoList}" th:value="${note.id}" th:text="${note.name}">Options</option>
+        <input type="submit" value="Move Left"/>
+    </select>
+</label><br/>
 </form>
 </body>
 </html>
