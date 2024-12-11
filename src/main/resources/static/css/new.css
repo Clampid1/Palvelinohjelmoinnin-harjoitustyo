@@ -1,0 +1,63 @@
+/* Basic reset for body and html */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Body styling for flex container */
+body {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: flex-start; /* Align elements to the top */
+    align-items: center;     /* Center horizontally */
+    height: 100%;
+    background-color: black;
+    color: aqua;
+}
+
+/* Header and paragraph styling */
+h1, p {
+    text-align: center;
+    margin-top: 20px; /* Space between top and the text */
+}
+
+/* Form styling */
+form {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; /* Limit form width */
+    margin-top: 40px; /* Space between the text and the form */
+}
+
+/* Styling for labels and inputs */
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Button styling */
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}

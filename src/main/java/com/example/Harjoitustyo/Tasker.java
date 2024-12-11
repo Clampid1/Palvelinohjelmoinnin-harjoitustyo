@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Tasker {
@@ -11,9 +13,13 @@ public class Tasker {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotBlank(message = "username must not be blank")
+    @Size(min = 5, max = 20, message = "username must be at least 5 characters long, up to 20")
     private String username;
+    @NotBlank(message = "password must not be blank")
+    @Size(min = 5, max = 20, message = "password must be at least 5 characters long, up to 20")
     private String password;
-    private String role;
+    private String role; // Either "USER" or "ADMIN"
 
     public Long getId() {
         return id;

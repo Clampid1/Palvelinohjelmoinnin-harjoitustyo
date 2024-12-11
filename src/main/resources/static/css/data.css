@@ -1,0 +1,79 @@
+/* Ensure the page takes up full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: black;
+    color: aqua;
+}
+
+/* Container for the content */
+main {
+    width: 100%;
+    max-width: 1200px; /* Optional: Limit max width */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all items horizontally */
+}
+
+/* Center title and other elements horizontally */
+h1, h2, form, a {
+    text-align: center;
+    margin: 10px;
+}
+a {
+    color: red;
+    font-size: 18px;
+}
+/* Table should take most of the screen width */
+table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+/* Styling for table headers */
+th {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+}
+
+/* Styling for table cells */
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    vertical-align: top;
+}
+
+/* Add styling to forms */
+form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Optional styling for select inputs */
+select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+/* Styling for the Sign Out button */
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}

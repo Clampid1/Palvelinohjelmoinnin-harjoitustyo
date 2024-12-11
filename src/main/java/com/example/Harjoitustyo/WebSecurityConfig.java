@@ -30,6 +30,7 @@ public class WebSecurityConfig {
 				.requestMatchers("/h2-console","/h2-console/**").permitAll()
 				.requestMatchers("/register/**").permitAll()
 				.requestMatchers("/rest/**").permitAll()
+				.requestMatchers("/css/**").permitAll()
 				.anyRequest().authenticated()
 			)
 			.formLogin((form) -> form
