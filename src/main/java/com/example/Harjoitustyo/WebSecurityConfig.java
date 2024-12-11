@@ -17,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+// Tietoturva konfiguraatio
 public class WebSecurityConfig {
 
 	@Autowired

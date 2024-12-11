@@ -15,6 +15,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private TaskerRepository taskerRepository;
 
+    //Customoitu UserDetailsService WebSecurityConfigille, jotta saadaan tietoturva kuntoon.
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Tasker> tasker = Optional.ofNullable(taskerRepository.findByUsername(username));

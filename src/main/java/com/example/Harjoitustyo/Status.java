@@ -1,10 +1,7 @@
 package com.example.Harjoitustyo;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -16,21 +13,22 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+// Luokka, joka säilyttää eri tilanne muuttujia.
 public class Status {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotBlank(message = "Current status must not be blank")
     private String status;
     @OneToMany (mappedBy = "status")
-    List<Todo> currentStatus = new ArrayList<>();
+    List<Task> currentStatus = new ArrayList<>();
 
-    public List<Todo> getCurrentStatus() {
+    public List<Task> getCurrentStatus() {
         return currentStatus;
     }
 
-    public void setCurrentStatus(List<Todo> currentStatus) {
+    public void setCurrentStatus(List<Task> currentStatus) {
         this.currentStatus = currentStatus;
     }
 

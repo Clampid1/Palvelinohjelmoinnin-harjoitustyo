@@ -19,7 +19,7 @@ class HarjoitustyoApplicationTests {
 	@Autowired
 	private TaskerRepository taskerRepository;
 	@Autowired
-	private TodoRepository todoRepository;
+	private TaskRepository taskRepository;
 
 	@Test
 	void contextLoads() {

@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
-
+	// Asetettu html tiedostojen nimiä tiettyihin osoitteisiin.
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/home").setViewName("index");
 		registry.addViewController("/").setViewName("index");

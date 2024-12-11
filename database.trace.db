@@ -1781,3 +1781,9 @@ Caused by: java.lang.AssertionError
 	at org.h2.mvstore.FileStore.executeFileStoreOperation(FileStore.java:1893)
 	at org.h2.mvstore.MVStore.executeFilestoreOperation(MVStore.java:922)
 	... 13 more
+2024-12-11 18:46:36.051744+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "PASSWORD CHARACTER VARYING(20)": "'$2a$10$vocTCLoCrAb7XGIb7.NzLOOD9jZcicSteZuqwTrlFxV/mFASeInlC' (60)"; SQL statement:
+INSERT INTO "PUBLIC"."TASKER_COPY_3_0"("ID", "PASSWORD", "ROLE", "USERNAME") OVERRIDING SYSTEM VALUE SELECT "ID", "PASSWORD", "ROLE", "USERNAME" FROM "PUBLIC"."TASKER" [22001-232]
+2024-12-11 18:52:57.748997+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "PASSWORD CHARACTER VARYING(20)": "'$2a$10$vocTCLoCrAb7XGIb7.NzLOOD9jZcicSteZuqwTrlFxV/mFASeInlC' (60)"; SQL statement:
+INSERT INTO "PUBLIC"."TASKER_COPY_3_0"("ID", "PASSWORD", "ROLE", "USERNAME") OVERRIDING SYSTEM VALUE SELECT "ID", "PASSWORD", "ROLE", "USERNAME" FROM "PUBLIC"."TASKER" [22001-232]

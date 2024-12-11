@@ -12,10 +12,11 @@ import jakarta.validation.constraints.Size;
 @Component
 @NoArgsConstructor
 @AllArgsConstructor
-public class Todo {
+// Tehtävä luokka
+public class Task {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotBlank(message = "Name must not be empty")
     private String name;

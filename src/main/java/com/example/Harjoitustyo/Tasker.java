@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
+// Luokka, joka säilyttää käyttäjiä
 public class Tasker {
 
     @Id
@@ -17,7 +18,6 @@ public class Tasker {
     @Size(min = 5, max = 20, message = "username must be at least 5 characters long, up to 20")
     private String username;
     @NotBlank(message = "password must not be blank")
-    @Size(min = 5, max = 20, message = "password must be at least 5 characters long, up to 20")
     private String password;
     private String role; // Either "USER" or "ADMIN"
 

@@ -10,24 +10,29 @@ import java.util.List;
 public class Rest_Controller {
 
     @Autowired
-    private TodoRepository todoRepository;
+    private TaskRepository taskRepository;
     @Autowired
     private TaskerRepository taskerRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    // Uuden käyttäjän lisääminen JSON-oliona.
     @PostMapping("/register/user")
     public Tasker createTasker(@RequestBody Tasker tasker) {
         tasker.setPassword(passwordEncoder.encode(tasker.getPassword()));
         return taskerRepository.save(tasker);
     }
+
+    // Voidaan hakea Sprint boardin sisältö JSON-oliona.
     @GetMapping("/rest/data")
-    public List<Todo> showAll() {
-        return this.todoRepository.findAll();
+    public List<Task> showAll() {
+        return this.taskRepository.findAll();
     }
+
+    // Voidaan poistaa yksittäinen tehtävä.
     @DeleteMapping("/rest/data/{id}")
     public void deleteTask(@PathVariable Long id) {
-        todoRepository.deleteById(id);
+        taskRepository.deleteById(id);
     }
 
 }
