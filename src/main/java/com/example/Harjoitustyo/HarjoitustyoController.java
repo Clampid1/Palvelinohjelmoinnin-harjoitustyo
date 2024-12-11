@@ -43,19 +43,25 @@ public class HarjoitustyoController {
         return "data";
     }
     @GetMapping("/new")
-    public String showNewPage() {
+    public String showNewPage(Model model) {
+        List<Status> statusList = this.statusRepository.findAll();
+        model.addAttribute("statusList", statusList);
         return "/new";
     }
     @PostMapping("/new")
     public String save(@RequestParam String name, @RequestParam int duration, @RequestParam String description,
-    @RequestParam String status) {
-        Status status1 = this.statusRepository.findByStatus(status);
-        Todo note = new Todo();
-        note.setName(name);
-        note.setDuration(duration);
-        note.setDescription(description);
-        note.setStatus(status1);
-        this.todoRepository.save(note);
+    @RequestParam(defaultValue = "1") Long id) {
+        Optional<Status> status1 = this.statusRepository.findById(id);
+        if (status1.isPresent()) {
+            Status status = status1.get();
+            Todo note = new Todo();
+            note.setName(name);
+            note.setDuration(duration);
+            note.setDescription(description);
+            note.setStatus(status);
+            this.todoRepository.save(note);
+            return "redirect:/data";
+        }
         return "redirect:/data";
     }
 
